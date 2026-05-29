@@ -1,4 +1,4 @@
-# Finding the Optimal Off-Campus Housing with Data
+# finding-the-optimal-off-campus-housing-with-data
 
 부산 지역(동의대학교 인근) 자취방 데이터를 정제하고, 공간정보 오픈 API(VWorld)와 자체 입지 분석 알고리즘을 결합하여 최적의 자취방을 추천해 주는 Streamlit 기반 인터랙티브 웹 대시보드입니다.
 
