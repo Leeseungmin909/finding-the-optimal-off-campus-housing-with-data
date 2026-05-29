@@ -1,4 +1,4 @@
-# Finding the Optimal Off-Campus Housing with Data
+# finding-the-optimal-off-campus-housing-with-data
 
 부산 지역(동의대학교 인근) 자취방 데이터를 정제하고, 공간정보 오픈 API(VWorld)와 자체 입지 분석 알고리즘을 결합하여 최적의 자취방을 추천해 주는 Streamlit 기반 인터랙티브 웹 대시보드입니다.
 
@@ -77,3 +77,4 @@ streamlit run app.py
 - **지하철 접근성:** 반경 800m 이내 접근 시, 거리가 가까울수록 보너스 점수 점진적 증가 (최대 12점)
 - **버스 접근성:** 반경 500m 이내 접근 시, 거리가 가까울수록 보너스 점수 점진적 증가 (최대 5점)
 - **방범 안전성:** 반경 100m 이내 방범용 CCTV 밀집도에 비례하여 안전 점수 부여 (개당 +3점 최대 9점)
+
