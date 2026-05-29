@@ -167,7 +167,11 @@ def prepare_house_scores(
     df["n_dist"] = normalize(df["학교거리_km"], inverse=True)   
     df["n_year"] = normalize(df["건축년도_정수"], inverse=False)  
 
-    df["코어점수(100점)"] = (weight_rent * df["n_rent"]) + (weight_dist * df["n_dist"]) + (weight_year * df["n_year"])
+    df["월세_기여점수"] = weight_rent * df["n_rent"]
+    df["학교거리_기여점수"] = weight_dist * df["n_dist"]
+    df["건축연식_기여점수"] = weight_year * df["n_year"]
+
+    df["코어점수(100점)"] = df["월세_기여점수"] + df["학교거리_기여점수"] + df["건축연식_기여점수"]
 
     # 최종 스코어
     df["최적점수"] = df["코어점수(100점)"] + df["알파점수(보너스)"]
@@ -179,6 +183,13 @@ def format_popup_html(row: pd.Series) -> str:
     total_score = round(float(row["최적점수"]), 2)
     core_score = round(float(row["코어점수(100점)"]), 2)
     alpha_score = round(float(row["알파점수(보너스)"]), 2)
+    rent_score = round(float(row["월세_기여점수"]), 2)
+    dist_score = round(float(row["학교거리_기여점수"]), 2)
+    year_score = round(float(row["건축연식_기여점수"]), 2)
+    subway_score = round(float(row["알파_지하철"]), 2)
+    bus_score = round(float(row["알파_버스"]), 2)
+    cctv_score = round(float(row["알파_CCTV"]), 2)
+    cctv_count = int(row["주변_CCTV_수"]) if pd.notna(row["주변_CCTV_수"]) else 0
     distance = round(float(row["학교거리_km"]), 2)
     deposit = row["보증금(만원)"]
     monthly = row["월세금(만원)"]
@@ -190,7 +201,7 @@ def format_popup_html(row: pd.Series) -> str:
     sub_str = f"{round(sub_dist * 1000)}m" if sub_dist != float('inf') else "정보 없음"
 
     return f"""
-    <div style="width:260px; font-family: sans-serif;">
+    <div style="width:320px; font-family: sans-serif;">
       <h4 style="margin-bottom:8px; color:#1a73e8;">{row.get('건물명', '자취방')}</h4>
       <p style="margin:2px 0;"><b>유형</b>: {row['전월세구분']}</p>
       <p style="margin:2px 0;"><b>보증금/월세</b>: {deposit} / {monthly}</p>
@@ -201,7 +212,13 @@ def format_popup_html(row: pd.Series) -> str:
       <p style="margin:2px 0;">최소 지하철 거리: {sub_str}</p>
       <hr style="margin: 8px 0; border: 0; border-top: 1px solid #eee;">
       <p style="margin:2px 0;"><b>코어 점수</b>: {core_score}</p>
-      <p style="margin:2px 0;"><b>알파 점수</b>: +{alpha_score}</p>
+      <p style="margin:2px 0 2px 10px;">월세 반영: {rent_score}점</p>
+      <p style="margin:2px 0 2px 10px;">학교거리 반영: {dist_score}점</p>
+      <p style="margin:2px 0 2px 10px;">건축연식 반영: {year_score}점</p>
+      <p style="margin:6px 0 2px;"><b>알파 점수</b>: +{alpha_score}</p>
+      <p style="margin:2px 0 2px 10px;">지하철 접근성: +{subway_score}점</p>
+      <p style="margin:2px 0 2px 10px;">버스 접근성: +{bus_score}점</p>
+      <p style="margin:2px 0 2px 10px;">CCTV 안전성: +{cctv_score}점 ({cctv_count}개)</p>
       <h3 style="margin:6px 0 0; color:#188038;">총점: {total_score}점</h3>
     </div>
     """

@@ -112,6 +112,7 @@ else:
     
     original_cols = ['건물명', '보증금(만원)', '월세금(만원)', '학교거리_km', '건축년도_정수', '최소_지하철_거리_km', '최소_버스_거리_km', '최적점수']
     display_df = filtered_df.head(display_count)[original_cols].copy()
+    display_df.insert(0, '순위', range(1, display_count + 1))
 
     display_df['학교거리_km'] = display_df['학교거리_km'].round(2)
     display_df['건축년도_정수'] = display_df['건축년도_정수'].astype(int)
@@ -119,11 +120,15 @@ else:
     display_df['최소_버스_거리_km'] = display_df['최소_버스_거리_km'].apply(lambda x: round(x, 2) if x != float('inf') else '-')
     display_df['최적점수'] = display_df['최적점수'].round(1)
 
-    display_df.columns = ['건물명', '보증금', '월세금', '학교거리', '건축년도', '지하철거리', '버스거리', '최종점수']
+    display_df.columns = ['순위', '건물명', '보증금', '월세금', '학교거리', '건축년도', '지하철거리', '버스거리', '최종점수']
 
     event = st.dataframe(
         display_df, 
         use_container_width=True,
+        hide_index=True,
+        column_config={
+            '순위': st.column_config.NumberColumn('순위', format='%d위', width='small'),
+        },
         on_select="rerun",          
         selection_mode="single-row" 
     )
