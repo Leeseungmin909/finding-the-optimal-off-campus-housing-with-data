@@ -55,7 +55,7 @@ with st.sidebar:
 
     st.header("인프라 가산점 (선택 시 활성화)")
     use_subway = st.checkbox("지하철역 가점 (최대 12점)", value=True)
-    use_bus = st.checkbox("버스정류장 가점 (최대 6점)", value=True)
+    use_bus = st.checkbox("버스정류장 가점 (최대 5점)", value=True)
     use_cctv = st.checkbox("방범용 CCTV 가점 (100m 이내 개당 +3점 최대 9점)", value=True)
     
     st.divider()

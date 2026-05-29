@@ -145,7 +145,7 @@ def prepare_house_scores(
             
         if len(cctv_lats) > 0:
             c_dists = get_distances_vectorized(h_lat, h_lon, cctv_lats, cctv_lons)
-            cctv_counts.append((c_dists <= 0.15).sum())
+            cctv_counts.append((c_dists <= 0.10).sum())
         else:
             cctv_counts.append(0)
 
@@ -158,7 +158,7 @@ def prepare_house_scores(
                          np.where(df['최소_지하철_거리_km'] <= 0.8, 12.0 * (0.8 - df['최소_지하철_거리_km']) / 0.7, 0.0))
     df['알파_버스'] = np.where(df['최소_버스_거리_km'] <= 0.1, 5.0,
                        np.where(df['최소_버스_거리_km'] <= 0.5, 5.0 * (0.5 - df['최소_버스_거리_km']) / 0.4, 0.0))
-    df['알파_CCTV'] = np.clip(df['주변_CCTV_수'] * 1.0, 0, 3.0)
+    df['알파_CCTV'] = np.clip(df['주변_CCTV_수'] * 3.0, 0, 9.0)
 
     df['알파점수(보너스)'] = df['알파_지하철'] + df['알파_버스'] + df['알파_CCTV']
 
