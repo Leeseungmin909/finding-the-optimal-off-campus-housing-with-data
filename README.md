@@ -3,7 +3,7 @@
 부산 지역(동의대학교 인근) 자취방 데이터를 정제하고, 공간정보 오픈 API(VWorld)와 자체 입지 분석 알고리즘을 결합하여 최적의 자취방을 추천해 주는 Streamlit 기반 인터랙티브 웹 대시보드입니다.
 
 ## 프로젝트 화면 (미리보기)
-<img width="1901" height="945" alt="image" src="https://github.com/user-attachments/assets/cfbf82a9-3c7b-4cd4-86db-c5e9138d1197" />
+<img width="1914" height="903" alt="image" src="https://github.com/user-attachments/assets/95f2d7a2-7020-4798-a582-150901d14fe7" />
 
 ## 디렉토리 구조
 
