@@ -5,6 +5,17 @@
 ## 프로젝트 화면 (미리보기)
 <img width="1915" height="907" alt="image" src="https://github.com/user-attachments/assets/81409ec1-c331-45bf-aa23-3ebd60780ecb" />
 
+## 기술 스택
+
+| 분류 | 기술 |
+|------|------|
+| **Language** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) |
+| **Dashboard** | ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white) ![streamlit--folium](https://img.shields.io/badge/streamlit--folium-3CB371?style=flat-square) |
+| **Data** | ![pandas](https://img.shields.io/badge/pandas-150458?style=flat-square&logo=pandas&logoColor=white) ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white) ![openpyxl](https://img.shields.io/badge/openpyxl-1D6F42?style=flat-square) |
+| **Geo / Map** | ![Folium](https://img.shields.io/badge/Folium-77B829?style=flat-square&logo=leaflet&logoColor=white) ![pyproj](https://img.shields.io/badge/pyproj-5C7CFA?style=flat-square) ![VWorld API](https://img.shields.io/badge/VWorld_Open_API-0078D4?style=flat-square) |
+| **Config** | ![dotenv](https://img.shields.io/badge/python--dotenv-ECD53F?style=flat-square) |
+| **Tools** | ![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white) |
+
 ## 디렉토리 구조
 
 ```text
